@@ -1,0 +1,9 @@
+# Generated from https://github.com/GMOogway/shadowrocket-rules/blob/master/sr_direct_list.module
+DOMAIN-REGEX,(?i)^(?:[^.]+\.)*zh\.okaapps\.com$
+DOMAIN-REGEX,(?i)^[a-z0-9._-]+-mihayo\.akamaized\.net$
+DOMAIN-REGEX,(?i)^[a-z0-9._-]+\.awsdns-cn-[0-9][0-9]\.(biz|com|net|top)$
+DOMAIN-REGEX,(?i)^[a-z0-9._-]+\.awsdns-cn-[0-9][a-e0-9]\.cn$
+DOMAIN-REGEX,(?i)^cdn\d-epicgames-\d+\.file\.myqcloud\.com$
+DOMAIN-REGEX,(?i)^epicgames-download\d-\d+\.file\.myqcloud\.com$
+DOMAIN-REGEX,(?i)^r+[0-9]+(---|\.)sn-(2x3|ni5|j5o)\w{5}\.googlevideo\.com$
+DOMAIN-REGEX,(?i)^r+[0-9]+(---|\.)sn-(2x3|ni5|j5o)\w{5}\.xn--ngstr-lra8j\.com$

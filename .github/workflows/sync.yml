@@ -1,0 +1,42 @@
+name: Sync Clash rules
+
+on:
+  schedule:
+    - cron: '23 5 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/sync.yml
+      - sync_rules.py
+      - tests/**
+
+concurrency:
+  group: sync-clash-rules
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Test converter
+        run: python3 -m unittest discover -s tests
+      - name: Fetch and convert rules
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python3 sync_rules.py
+      - name: Publish changed rules
+        run: |
+          git add -- rules
+          if git diff --cached --quiet; then
+            echo "Rule files are unchanged."
+            exit 0
+          fi
+          git -c user.name=github-actions[bot] -c user.email=41898282+github-actions[bot]@users.noreply.github.com commit -m "Sync Clash rules"
+          git push origin "HEAD:refs/heads/${GITHUB_REF_NAME}"
