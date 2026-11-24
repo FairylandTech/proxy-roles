@@ -9848,6 +9848,7 @@
 +.gemfury.com
 +.gemini.com
 +.gemini.google.com
++.gemma.ai
 +.gen.lib.rus.ec
 +.genbank.ru
 +.gencraft.com
